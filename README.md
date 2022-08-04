@@ -38,6 +38,3 @@ To start the express server, run the following.
 npm run dev
 ```
 
-For more details check [Build a Restful CRUD API with Node.js](https://dev.to/zagaris/build-a-restful-crud-api-with-node-js-2334).
-
-
