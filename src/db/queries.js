@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 const { Pool } = require('pg');
 
 const pool = new Pool({
@@ -18,11 +19,9 @@ const getTitles = (request, response) => {
 };
 
 const getTitleById = (request, response) => {
-  // eslint-disable-next-line radix
-  const tconst = parseInt(request.params.id);
-
+  const tconst = request.params.id;
   pool.query(
-    'SELECT * FROM titles WHERE tconst = $1 AND startyear>2021',
+    'SELECT * FROM titles WHERE tconst = $1',
     [tconst],
     (error, results) => {
       if (error) {
@@ -47,7 +46,7 @@ const createTitle = (request, response) => {
   } = request.body;
 
   pool.query(
-    'INSERT INTO titles (tconst, titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres) VALUES ($1, $2, $1, $2, $1, $2,$1, $2,$1) RETURNING *',
+    'INSERT INTO titles (tconst, titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
     [
       tconst,
       titleType,
@@ -69,7 +68,7 @@ const createTitle = (request, response) => {
 };
 
 const updateTitle = (request, response) => {
-  const tconst = parseInt(request.params.id);
+  const tconst = request.params.id;
   const {
     titleType,
     primaryTitle,
@@ -82,7 +81,7 @@ const updateTitle = (request, response) => {
   } = request.body;
 
   pool.query(
-    'UPDATE titles SET titleType = $1,primaryTitle= $1,originalTitle= $1,isAdult= $1,startYear= $1,endYear= $1,runtimeMinutes= $1,genres= $1 WHERE tconst = $3',
+    'UPDATE titles SET titleType = $2, primaryTitle= $3, originalTitle= $4, isAdult= $5, startYear= $6, endYear= $7, runtimeMinutes= $8, genres= $9 WHERE tconst = $1',
     [
       tconst,
       titleType,
@@ -94,7 +93,7 @@ const updateTitle = (request, response) => {
       runtimeMinutes,
       genres,
     ],
-    (error, results) => {
+    (error) => {
       if (error) {
         throw error;
       }
@@ -105,18 +104,14 @@ const updateTitle = (request, response) => {
 
 const deleteTitle = (request, response) => {
   // eslint-disable-next-line radix
-  const tconst = parseInt(request.params.id);
+  const tconst = request.params.id;
 
-  pool.query(
-    'DELETE FROM titles WHERE tconst = $1',
-    [tconst],
-    (error, results) => {
-      if (error) {
-        throw error;
-      }
-      response.status(200).send(`User deleted with ID: ${tconst}`);
+  pool.query('DELETE FROM titles WHERE tconst = $1', [tconst], (error) => {
+    if (error) {
+      throw error;
     }
-  );
+    response.status(200).send(`User deleted with ID: ${tconst}`);
+  });
 };
 
 module.exports = {
