@@ -10,18 +10,23 @@ const pool = new Pool({
 });
 
 const getTitles = (request, response) => {
-  pool.query('SELECT * FROM titles WHERE startyear>2021', (error, results) => {
-    if (error) {
-      throw error;
+  pool.query(
+    'SELECT * FROM titles WHERE startyear>2021 ORDER BY startyear ASC',
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results);
     }
-    response.status(200).json(results);
-  });
+  );
 };
 
 const getTitleById = (request, response) => {
   const tconst = request.params.id;
+  // const formattedId = ('0' + tconst).slice(-2);
+  // console.log(formattedNumber);
   pool.query(
-    'SELECT * FROM titles WHERE tconst = $1',
+    'SELECT * FROM titles WHERE tconst = $1 ORDER BY startyear ASC',
     [tconst],
     (error, results) => {
       if (error) {
