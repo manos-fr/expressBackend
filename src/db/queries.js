@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable comma-dangle */
 const { Pool } = require('pg');
 
@@ -23,8 +24,6 @@ const getTitles = (request, response) => {
 
 const getTitleById = (request, response) => {
   const tconst = request.params.id;
-  // const formattedId = ('0' + tconst).slice(-2);
-  // console.log(formattedNumber);
   pool.query(
     'SELECT * FROM titles WHERE tconst = $1 ORDER BY startyear ASC',
     [tconst],
@@ -38,66 +37,29 @@ const getTitleById = (request, response) => {
 };
 
 const createTitle = (request, response) => {
-  const {
-    tconst,
-    titleType,
-    primaryTitle,
-    originalTitle,
-    isAdult,
-    startYear,
-    endYear,
-    runtimeMinutes,
-    genres,
-  } = request.body;
+  const { tconst, originalTitle, startYear, genres } = request.body;
 
   pool.query(
-    'INSERT INTO titles (tconst, titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
-    [
-      tconst,
-      titleType,
-      primaryTitle,
-      originalTitle,
-      isAdult,
-      startYear,
-      endYear,
-      runtimeMinutes,
-      genres,
-    ],
+    'INSERT INTO titles (tconst, originaltitle, startyear, genres) VALUES ($1, $2, $3, $4) RETURNING *',
+    [tconst, originalTitle, startYear, genres],
     (error, results) => {
       if (error) {
         throw error;
       }
-      response.status(201).send(`User added with ID: ${results.rows[0].id}`);
+      response.status(201).send(`User added with ID: ${results}`);
     }
   );
 };
 
 const updateTitle = (request, response) => {
   const tconst = request.params.id;
-  const {
-    titleType,
-    primaryTitle,
-    originalTitle,
-    isAdult,
-    startYear,
-    endYear,
-    runtimeMinutes,
-    genres,
-  } = request.body;
+  const { originalTitle, startYear, genres } = request.body;
+
+  console.log({ request });
 
   pool.query(
-    'UPDATE titles SET titleType = $2, primaryTitle= $3, originalTitle= $4, isAdult= $5, startYear= $6, endYear= $7, runtimeMinutes= $8, genres= $9 WHERE tconst = $1',
-    [
-      tconst,
-      titleType,
-      primaryTitle,
-      originalTitle,
-      isAdult,
-      startYear,
-      endYear,
-      runtimeMinutes,
-      genres,
-    ],
+    'UPDATE titles SET originaltitle= $2, startyear= $3, genres= $4 WHERE tconst = $1',
+    [tconst, originalTitle, startYear, genres],
     (error) => {
       if (error) {
         throw error;
@@ -108,7 +70,6 @@ const updateTitle = (request, response) => {
 };
 
 const deleteTitle = (request, response) => {
-  // eslint-disable-next-line radix
   const tconst = request.params.id;
 
   pool.query('DELETE FROM titles WHERE tconst = $1', [tconst], (error) => {
