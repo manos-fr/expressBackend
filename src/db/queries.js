@@ -3,23 +3,23 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'Movies',
-  password: '12345',
+  user: 'vqlnioqfkvocxj',
+  host: 'ec2-54-229-217-195.eu-west-1.compute.amazonaws.com',
+  database: 'de9mikemijit5j',
+  password: '20de6fb3a0fd8e652444adbe7273c89429f28c11cc1376e46eb789cfb8474bef',
   port: 5432,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 const getTitles = (request, response) => {
-  pool.query(
-    'SELECT * FROM titles WHERE startyear>2021 ORDER BY startyear ASC',
-    (error, results) => {
-      if (error) {
-        throw error;
-      }
-      response.status(200).json(results);
+  pool.query('SELECT * FROM titles', (error, results) => {
+    if (error) {
+      throw error;
     }
-  );
+    response.status(200).json(results);
+  });
 };
 
 const getTitleById = (request, response) => {
