@@ -20,8 +20,6 @@ Clone the repo.
 cd express-api
 ```
 
-Create the .env file.
-
 Install the dependencies.
 
 ```bash
