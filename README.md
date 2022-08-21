@@ -14,6 +14,14 @@ API Endpoints
 
 ## Quick Start
 
+## Deployed server in Heroku
+
+- Url to use for endpoints instead of localhost
+
+```
+https://thawing-caverns-10070.herokuapp.com
+```
+
 Clone the repo.
 
 ```bash
