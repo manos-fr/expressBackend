@@ -55,8 +55,6 @@ const updateTitle = (request, response) => {
   const tconst = request.params.id;
   const { originalTitle, startYear, genres } = request.body;
 
-  console.log({ request });
-
   pool.query(
     'UPDATE titles SET originaltitle= $2, startyear= $3, genres= $4 WHERE tconst = $1',
     [tconst, originalTitle, startYear, genres],
