@@ -46,7 +46,7 @@ const createTitle = (request, response) => {
       if (error) {
         throw error;
       }
-      response.status(201).send(`User added with ID: ${results}`);
+      response.status(201).send({ res: results.rows });
     }
   );
 };
@@ -62,7 +62,7 @@ const updateTitle = (request, response) => {
       if (error) {
         throw error;
       }
-      response.status(200).send(`User modified with ID: ${tconst}`);
+      response.status(200).send({ res: `User modified with ID: ${tconst}` });
     }
   );
 };
@@ -74,7 +74,7 @@ const deleteTitle = (request, response) => {
     if (error) {
       throw error;
     }
-    response.status(200).send(`User deleted with ID: ${tconst}`);
+    response.status(200).send({ res: `User deleted with ID: ${tconst}` });
   });
 };
 
