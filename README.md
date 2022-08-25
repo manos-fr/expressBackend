@@ -12,7 +12,7 @@ API Endpoints
 | PUT     | /titles/:id | Update an existing title |
 | DELETE  | /titles/:id | Delete an existing title |
 
-## Deployed server in Heroku
+## Deployed server in Heroku (Unfortunately heroku dynos and postgres will become paid from November 28)
 
 - Url to use for endpoints instead of localhost
 
