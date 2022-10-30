@@ -151,3 +151,6 @@ Percentage of the requests served within a certain time (ms)
 100% 5183 (longest request)
 
 Table rows: 8477
+
+ab -u benchPut.json -T application/json -c 10 -t 10 127.0.0.1:3000/titles/tt0496196
+ab -t 10 -c 10 -p bench.json -T application/json 127.0.0.1:3000/titles
