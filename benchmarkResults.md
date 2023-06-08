@@ -62,35 +62,34 @@ Percentage of the requests served within a certain time (ms)
  100%     49 (longest request)
 
  ### PUT
-
-Concurrency Level:      10
-- Time taken for tests:   10.127 seconds
-- Complete requests:      7629
+ Concurrency Level:      10
+Time taken for tests:   10.000 seconds
+- Complete requests:      11848
 Failed requests:        0
-Total transferred:      2167488 bytes
-Total body sent:        1747728
-HTML transferred:       343440 bytes
-- Requests per second:    753.36 [#/sec] (mean)
-- Time per request:       13.274 [ms] (mean)
-Time per request:       1.327 [ms] (mean, across all concurrent requests)
-Transfer rate:          209.02 [Kbytes/sec] received
-                        168.54 kb/s sent
-                        377.56 kb/s total
+Total transferred:      3365116 bytes
+Total body sent:        2715253
+HTML transferred:       533205 bytes
+- Requests per second:    1184.79 [#/sec] (mean)
+- Time per request:       8.440 [ms] (mean)
+Time per request:       0.844 [ms] (mean, across all concurrent requests)
+Transfer rate:          328.62 [Kbytes/sec] received
+                        265.16 kb/s sent
+                        593.78 kb/s total
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    5 134.3      0    3717
-Processing:     1    8  21.2      6     555
-Waiting:        1    8  20.7      6     554
-Total:          1   13 136.6      6    3747
+Connect:        0    0   0.3      0      12
+Processing:     1    8   5.1      7     202
+Waiting:        1    8   5.1      7     201
+Total:          1    8   5.1      7     203
 
 Percentage of the requests served within a certain time (ms)
-  50%      6
-  66%      7
-  75%      9
-  80%     10
-  90%     13
-  95%     16
-  98%     20
+  50%      7
+  66%      9
+  75%     10
+  80%     12
+  90%     15
+  95%     17
+  98%     21
   99%     24
- 100%   3747 (longest request)
+ 100%    203 (longest request)

@@ -31,3 +31,20 @@ latency average = 0.513 ms
 latency stddev = 0.388 ms
 tps = 18807.504839 (including connections establishing)
 tps = 18814.351018 (excluding connections establishing)
+
+### PUT
+
+pgbench -h localhost -p 5432 -U postgres -n -f benchPut.sql -T10 -P5 -c10 postgres
+progress: 5.0 s, 1521.6 tps, lat 6.518 ms stddev 4.278
+progress: 10.0 s, 1509.8 tps, lat 6.624 ms stddev 4.227
+transaction type: benchPut.sql
+scaling factor: 1
+query mode: simple
+- number of clients: 10
+- number of threads: 1
+- duration: 10 s
+- number of transactions actually processed: 15164
+latency average = 6.573 ms
+latency stddev = 4.254 ms
+tps = 1514.403876 (including connections establishing)
+tps = 1514.964706 (excluding connections establishing)
