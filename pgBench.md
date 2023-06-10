@@ -1,6 +1,5 @@
 ### GET
 
-# pgbench -h localhost -p 5432 -U postgres -n -f bench.sql -T10 -P5 -c10 postgres
 progress: 5.0 s, 1153.6 tps, lat 8.507 ms stddev 1.447
 progress: 10.0 s, 1208.4 tps, lat 8.181 ms stddev 0.545
 transaction type: bench.sql
@@ -17,7 +16,6 @@ tps = 1181.757528 (excluding connections establishing)
 
 ### POST
 
-# pgbench -h localhost -p 5432 -U postgres -n -f benchPost.sql -T10 -P5 -c10 postgres
 progress: 5.0 s, 18157.7 tps, lat 0.528 ms stddev 0.406
 progress: 10.0 s, 19473.5 tps, lat 0.499 ms stddev 0.369
 transaction type: benchPost.sql
@@ -34,7 +32,6 @@ tps = 18814.351018 (excluding connections establishing)
 
 ### PUT
 
-pgbench -h localhost -p 5432 -U postgres -n -f benchPut.sql -T10 -P5 -c10 postgres
 progress: 5.0 s, 1521.6 tps, lat 6.518 ms stddev 4.278
 progress: 10.0 s, 1509.8 tps, lat 6.624 ms stddev 4.227
 transaction type: benchPut.sql
