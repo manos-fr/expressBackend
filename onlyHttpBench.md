@@ -1,5 +1,4 @@
-Concurrency Level:      10
-- Time taken for tests:   14.951 seconds
+Time taken for tests:   14.951 seconds
 - Complete requests:      16305
 Failed requests:        0
 Total transferred:      4255605 bytes
